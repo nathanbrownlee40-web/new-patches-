@@ -743,3 +743,9 @@ canvas {
     height: 200px;
   }
 }
+
+
+@media (max-width:768px){
+  .trackActions{position:static !important; display:flex; gap:4px;}
+  .trackBtn{padding:4px 6px; font-size:11px; border-radius:8px;}
+}

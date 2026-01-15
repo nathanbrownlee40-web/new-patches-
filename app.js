@@ -1546,3 +1546,30 @@ function filterTracker(arr, f){
 }
 
 console.log('Charts v2.1 mobile fix');
+
+
+
+// === MOBILE FIX: MOVE ACTION BUTTONS INSIDE CARD & REMOVE VOID ===
+function mobileActionFix(){
+  if (window.innerWidth > 768) return;
+  document.querySelectorAll('.cardItem').forEach(card=>{
+    const actions = card.querySelector('.trackActions');
+    if (!actions) return;
+    // remove void buttons
+    actions.querySelectorAll('[data-action="void"], .void').forEach(v=>v.remove());
+    // ensure footer
+    let footer = card.querySelector('.cardFooter');
+    if (!footer){
+      footer = document.createElement('div');
+      footer.className = 'cardFooter';
+      footer.style.display = 'flex';
+      footer.style.justifyContent = 'flex-end';
+      footer.style.gap = '6px';
+      footer.style.marginTop = '6px';
+      card.appendChild(footer);
+    }
+    footer.appendChild(actions);
+  });
+}
+window.addEventListener('resize', mobileActionFix);
+document.addEventListener('DOMContentLoaded', ()=>setTimeout(mobileActionFix, 300));
