@@ -11,14 +11,7 @@
   --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 *{box-sizing:border-box}
-html,body{
-  height:100%;
-  width:100%;
-  overflow-x:hidden;
-  /* stop mobile browsers from auto-resizing text and breaking alignment */
-  -webkit-text-size-adjust:100%;
-  text-size-adjust:100%;
-}
+html,body{height:100%}
 body{
   margin:0;
   font-family: var(--sans);
@@ -32,23 +25,19 @@ body{
   background: rgba(11,16,32,.75);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
-  width:100%;
-  padding: 16px calc(18px + env(safe-area-inset-right)) 16px calc(18px + env(safe-area-inset-left));
+  padding: 16px 18px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:12px;
 }
-.title{min-width:0}
-.actions{min-width:0}
 .title h1{margin:0; font-size: 18px; letter-spacing:.2px}
 .subtitle{margin:3px 0 0; color:var(--muted); font-size: 12px}
 .actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
 .container{
   max-width: 1100px;
   margin: 18px auto 40px;
-  width:100%;
-  padding: 0 calc(12px + env(safe-area-inset-right)) 0 calc(12px + env(safe-area-inset-left));
+  padding: 0 12px;
   display:grid;
   gap:14px;
 }
@@ -57,8 +46,6 @@ body{
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  max-width: 100%;
-  overflow: hidden;
 }
 .controls{
   padding: 12px;
@@ -565,16 +552,13 @@ body{overflow-x:hidden;}
 
 /* ===== Tracker: mobile fit (prevents horizontal overflow) ===== */
 @media (max-width: 520px){
-  /* Prevent iOS/Android auto-zoom when focusing controls */
-  input, select, textarea, button{ font-size: 16px; }
-
   body.trackerView{
     overflow-x: hidden;
   }
   body.trackerView .container{
     max-width: 100%;
-    padding-left: calc(10px + env(safe-area-inset-left));
-    padding-right: calc(10px + env(safe-area-inset-right));
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   /* Stack tracker sections so nothing forces width */
@@ -682,27 +666,31 @@ canvas {
 }
 
 
-/* === MOBILE COMPACT LAYOUT FIX === */
-@media (max-width: 640px) {
-  body {
-    overflow-x: hidden;
+/* === MOBILE: NEAT ACTION BUTTONS (FIX OVERFLOW) === */
+@media (max-width: 768px) {
+  .cardItem {
+    position: relative;
+    overflow: hidden;
   }
 
-  .container,
-  .topbar {
-    max-width: 100%;
-    margin: 0 auto;
-    padding-left: 12px;
-    padding-right: 12px;
+  .trackActions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
   }
 
-  .controls,
-  .card {
-    margin-left: auto;
-    margin-right: auto;
+  .trackBtn,
+  .trackAdd {
+    padding: 6px 8px;
+    font-size: 12px;
+    line-height: 1;
+    min-width: 36px;
+    border-radius: 10px;
   }
 
-  .trackerChart canvas {
-    height: 200px;
+  .cardTop {
+    align-items: flex-start;
   }
 }
