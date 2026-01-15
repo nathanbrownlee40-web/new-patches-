@@ -694,3 +694,28 @@ canvas {
     align-items: flex-start;
   }
 }
+
+
+/* === MOBILE ACTION BAR (STABLE) === */
+@media (max-width: 768px) {
+  .cardItem {
+    overflow: hidden;
+  }
+
+  .trackActions {
+    position: static !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  .trackBtn,
+  .trackAdd {
+    width: 100%;
+    padding: 6px 0;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+}
